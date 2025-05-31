@@ -5,7 +5,8 @@ import json
 def main():
     parser = argparse.ArgumentParser(
                     prog='gendiff',
-                    description='Compares two configuration files and shows a difference.'
+                    description='Compares two configuration \
+                        files and shows a difference.'
                     )
     parser.add_argument('-f', '--format', type=str, help='set format of output')
     parser.add_argument('first_file')
@@ -25,19 +26,11 @@ def read_and_sort_json(json_file):
     return sorted_data
 
 
-def generate_diff(file_path1, file_path2):    
+def generate_diff(file_path1, file_path2):
     diff_result = '{\n'
     
     file1_data = read_and_sort_json(file_path1)
     file2_data = read_and_sort_json(file_path2)
-
-    # print('\nfile1 data:')
-    # for data in file1_data:
-    #     print(f'{data} = {file1_data[data]}')
-    
-    # print('\nfile2 data:')
-    # for data in file2_data:
-    #     print(f'{data} = {file2_data[data]}')
     
     for key_1 in file1_data:
         if key_1 in file2_data:
@@ -54,7 +47,7 @@ def generate_diff(file_path1, file_path2):
             diff_result += f'  - {key_1}: {file1_data[key_1]}\n'
     diff_result += '}'
     
-    print(diff_result)
+    return diff_result
 
 
 if __name__ == '__main__':
