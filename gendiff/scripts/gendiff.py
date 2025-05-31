@@ -47,7 +47,7 @@ def generate_diff(file_path1, file_path2):
         else:
             diff_result += f'  - {key_1}: {file1_data[key_1]}\n'
     diff_result += '}'
-    # print(diff_result)
+    print(diff_result)
     return diff_result
 
 
