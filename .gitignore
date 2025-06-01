@@ -5,7 +5,6 @@ dist/
 .venv
 .coverage
 .python-version
-coverage.xml
 *_cache/
 *.cast
 .vscode 
