@@ -8,5 +8,4 @@ dist/
 coverage.xml
 *_cache/
 *.cast
-.sonar/
-.scannerwork/ 
+.vscode 
