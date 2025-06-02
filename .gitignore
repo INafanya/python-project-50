@@ -4,6 +4,7 @@ dist/
 *.pyc
 .venv
 .coverage
+coverage.xml
 .python-version
 *_cache/
 *.cast
