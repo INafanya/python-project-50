@@ -18,9 +18,10 @@ def read_and_sort_yaml(file_path):
 
 
 def get_parsed_file(file_path):
-    if file_path.endswith('.json'):
+    str_file_path = str(file_path)
+    if str_file_path.endswith('.json'):
         return read_and_sort_json(file_path)
-    elif file_path.endswith('.yml') or file_path.endswith('yaml'):
+    elif str_file_path.endswith('.yml') or str_file_path.endswith('yaml'):
         return read_and_sort_yaml(file_path)
     else:
         print('not json')
