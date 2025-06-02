@@ -2,6 +2,7 @@ install:
 	uv sync
 
 reinstall:
+	uv sync
 	uv build
 	uv tool install --force dist/*.whl
 
