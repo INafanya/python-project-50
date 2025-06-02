@@ -24,12 +24,23 @@ jobs:
       - name: Run test coverage
         run: |
           make test-coverage
-      - name: SonarQubeScan
+      # - name: SonarQubeScan
+      #   uses: SonarSource/sonarqube-scan-action@v5
+      #   env:
+      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      #   with:
+      #     args: >
+      #       -Dsonar.projectKey=INafanya_python-project-50
+      #       -Dsonar.organization=inafanya
+      #       -Dsonar.python.coverage.reportPaths=coverage.xml
+  sonarqube:
+    name: SonarQube
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+      - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@v5
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        with:
-          args: >
-            -Dsonar.projectKey=INafanya_python-project-50
-            -Dsonar.organization=inafanya
-            -Dsonar.python.coverage.reportPaths=coverage.xml
