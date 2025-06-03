@@ -1,6 +1,5 @@
 import argparse
 
-# from gendiff.parsing.parsing_file import get_parsed_file
 from gendiff.generate_diff.generate_diff import generate_diff
 
 
