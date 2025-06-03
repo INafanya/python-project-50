@@ -17,10 +17,8 @@ def test_gendiff_yaml():
     expected_similar = read_text_file('similar_result.txt')
     expected_different = read_text_file('different_result.txt')
     
-    # Сравнение одинкаовых json
+    # Сравнение одинкаовых yaml
     assert generate_diff(file1_yaml, file1_yaml) == expected_similar
     
-    # Сравнение разных json
+    # Сравнение разных yaml
     assert generate_diff(file1_yaml, file2_yaml) == expected_different
-    
-    # Сравнение некорректных json
