@@ -3,7 +3,7 @@ from pathlib import Path
 
 import yaml
 
-from gendiff.parsing.parsing_file import read_json, read_yaml, get_parsed_file
+from gendiff.parsing.parsing_file import get_parsed_file, read_json, read_yaml
 
 
 def get_test_data_path(filename):
