@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from gendiff.scripts.gendiff import generate_diff
+from gendiff.generate_diff.generate_diff import generate_diff
 
 
 def get_test_data_path(filename):
@@ -11,16 +11,23 @@ def read_text_file(filename):
     return get_test_data_path(filename).read_text()
 
     
-def test_gendiff_json():
-    file1_json = get_test_data_path('file1.json')
-    file2_json = get_test_data_path('file2.json')
+def test_gendiff_flat_json():
+    file1 = get_test_data_path('file1.json')
+    file2 = get_test_data_path('file2.json')
     expected_similar = read_text_file('similar_result.txt')
     expected_different = read_text_file('different_result.txt')
-    
     # Сравнение одинкаовых json
-    assert generate_diff(file1_json, file1_json) == expected_similar
-    
+    assert generate_diff(file1, file1) == expected_similar
     # Сравнение разных json
-    assert generate_diff(file1_json, file2_json) == expected_different
+    assert generate_diff(file1, file2) == expected_different
     
-    # Сравнение некорректных json
+
+def test_gendiff_tree_json():
+    file3 = get_test_data_path('file3.json')
+    file4 = get_test_data_path('file4.json')
+    expected_similar = read_text_file('similar_tree_result.txt')
+    expected_different = read_text_file('different_tree_result.txt')
+    # Сравнение одинкаовых json
+    assert generate_diff(file3, file3) == expected_similar
+    # Сравнение разных json
+    assert generate_diff(file3, file4) == expected_different

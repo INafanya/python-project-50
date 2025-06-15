@@ -9,15 +9,13 @@ def main():
                     description='Compares two configuration \
                         files and shows a difference.'
                     )
-    parser.add_argument('-f', '--format', type=str, help='set format of output')
     parser.add_argument('first_file')
     parser.add_argument('second_file')
+    parser.add_argument('-f', '--format', type=str, default='stylish', help='set format of output')  # noqa: E501
     args = parser.parse_args()
     
-    file1 = args.first_file
-    file2 = args.second_file
-    
-    generate_diff(file1, file2)
+    result = generate_diff(args.first_file, args.second_file, args.format)
+    print(result)
 
 
 if __name__ == '__main__':

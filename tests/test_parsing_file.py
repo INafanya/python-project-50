@@ -41,17 +41,22 @@ def test_parsing_yaml():
 def test_parsing():
     file1_json = get_test_data_path('file1.json')
     file1_yaml = get_test_data_path('file1.yaml')
-    expected_json = read_json_file('file1.json')
-    expected_yaml = read_yaml_file('file1.yaml')
+    expected_falt_json = read_json_file('file1.json')
+    expected_flat_yaml = read_yaml_file('file1.yaml')
+    file3_json = get_test_data_path('file3.json')
+    file3_yaml = get_test_data_path('file3.yaml')
+    expected_tree_json = read_json_file('file3.json')
+    expected__tree_yaml = read_yaml_file('file3.yaml')
     
-    assert get_parsed_file(file1_json) == expected_json
-    assert get_parsed_file(file1_yaml) == expected_yaml
+    assert get_parsed_file(file1_json) == expected_falt_json
+    assert get_parsed_file(file1_yaml) == expected_flat_yaml
+    assert get_parsed_file(file3_json) == expected_tree_json
+    assert get_parsed_file(file3_yaml) == expected__tree_yaml
     
 
 def test_parsing_other_files():
     incorrect_file = get_test_data_path('file.csv')
     
     assert get_parsed_file(incorrect_file) == 'not json or yaml file'
-    
     
 # Написать тест для проверки json и yaml на корректность

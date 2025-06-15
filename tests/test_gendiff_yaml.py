@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from gendiff.scripts.gendiff import generate_diff
+from gendiff.generate_diff.generate_diff import generate_diff
 
 
 def get_test_data_path(filename):
@@ -11,14 +11,23 @@ def read_text_file(filename):
     return get_test_data_path(filename).read_text()
 
     
-def test_gendiff_yaml():
-    file1_yaml = get_test_data_path('file1.yaml')
-    file2_yaml = get_test_data_path('file2.yaml')
+def test_gendiff_flat_yaml():
+    file1 = get_test_data_path('file1.yaml')
+    file2 = get_test_data_path('file2.yaml')
     expected_similar = read_text_file('similar_result.txt')
     expected_different = read_text_file('different_result.txt')
-    
     # Сравнение одинкаовых yaml
-    assert generate_diff(file1_yaml, file1_yaml) == expected_similar
-    
+    assert generate_diff(file1, file1) == expected_similar
     # Сравнение разных yaml
-    assert generate_diff(file1_yaml, file2_yaml) == expected_different
+    assert generate_diff(file1, file2) == expected_different
+    
+    
+def test_gendiff_tree_yaml():
+    file3 = get_test_data_path('file3.yaml')
+    file4 = get_test_data_path('file4.yaml')
+    expected_similar = read_text_file('similar_tree_result.txt')
+    expected_different = read_text_file('different_tree_result.txt')
+    # Сравнение одинкаовых yaml
+    assert generate_diff(file3, file3) == expected_similar
+    # Сравнение разных yaml
+    assert generate_diff(file3, file4) == expected_different
