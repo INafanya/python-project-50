@@ -24,11 +24,13 @@ def get_diff_formatted_plain(diff, parents=None, lines=None):
         parent = f"{parents}.{key_name}" if parents else key_name 
 
         if status == "added":
-            lines.append(f"Property '{parent}' was added with value: {current_value}")
+            lines.append(f"Property '{parent}' was added with value: \
+{current_value}")
         elif status == "deleted":
             lines.append(f"Property '{parent}' was removed")
         elif status == "changed":
-            lines.append(f"Property '{parent}' was updated. From {value_old} to {value_new}")
+            lines.append(f"Property '{parent}' was updated. \
+From {value_old} to {value_new}")
         elif status == 'nested':
             get_diff_formatted_plain(
                 item.get("children"), parent, lines)
