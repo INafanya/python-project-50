@@ -25,11 +25,31 @@ def test_get_formatted_value():
     
     
 def test_make_stylish_result():
-    unchanged = [{'key': 'setting1', 'status': 'unchanged', 'value': 'Value 1'}]
-    changed = [{'key': 'wow', 'status': 'changed', 'value_old': '', 'value_new': 'so much'}]
-    deleted = [{'key': 'setting2', 'status': 'deleted', 'value': 200}]
-    added = [{'key': 'follow', 'status': 'added', 'value': False}]
-    nested = [{'key': 'doge', 'status': 'nested', 'children': [{'key': 'one', 'status': 'unchanged', 'value': '1'}, {'key': 'two', 'status': 'unchanged', 'value': '2'}]}]
+    unchanged = [{'key': 'setting1',
+                  'status': 'unchanged',
+                  'value': 'Value 1'}]
+    changed = [{'key': 'wow',
+                'status': 'changed',
+                'value_old': '',
+                'value_new': 'so much'}]
+    deleted = [{'key': 'setting2',
+                'status': 'deleted',
+                'value': 200}]
+    added = [{'key': 'follow',
+              'status': 'added',
+              'value': False}]
+    nested = [{'key': 'doge',
+               'status': 'nested',
+               'children': [
+                   {'key': 'one',
+                    'status': 'unchanged',
+                             'value': '1'},
+                    {'key': 'two',
+                     'status': 'unchanged',
+                     'value': '2'}
+                    ]
+               }
+              ]
     
     expected_unchanged = '{\n    setting1: Value 1\n}'
     expected_changed = '{\n  - wow: \n  + wow: so much\n}'
