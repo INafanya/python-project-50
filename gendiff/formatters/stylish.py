@@ -17,8 +17,7 @@ def get_formatted_value(value, depth=1):
     return f"{value}"
 
 
-def make_stylish_result(diff, depth=1):
-    print(diff)
+def get_diff_formatted_stylish(diff, depth=1):
     indent = get_indent(depth)
     lines = []
     for item in diff:
@@ -37,12 +36,8 @@ def make_stylish_result(diff, depth=1):
         elif status == "added":
             lines.append(f"{indent}+ {key_name}: {current_value}")
         elif status == 'nested':
-            children = make_stylish_result(
+            children = get_diff_formatted_stylish(
                 item.get("children"), depth + 1
             )
             lines.append(f"{indent}  {key_name}: {children}")
     return "{{\n{}\n{}}}".format("\n".join(lines), indent[:-2])
-
-
-def get_diff_formatted_stylish(diff):
-    return make_stylish_result(diff)

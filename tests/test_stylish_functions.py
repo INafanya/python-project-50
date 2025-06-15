@@ -1,7 +1,7 @@
 from gendiff.formatters.stylish import (
+    get_diff_formatted_stylish,
     get_formatted_value,
     get_indent,
-    make_stylish_result,
 )
 
 
@@ -24,7 +24,7 @@ def test_get_formatted_value():
     assert get_formatted_value(dict_to_format) == expected_dict
     
     
-def test_make_stylish_result():
+def test_get_diff_formatted_stylish():
     unchanged = [{'key': 'setting1',
                   'status': 'unchanged',
                   'value': 'Value 1'}]
@@ -57,8 +57,8 @@ def test_make_stylish_result():
     expected_added = '{\n  + follow: false\n}'
     expected_nested = '{\n    doge: {\n        one: 1\n        two: 2\n    }\n}'
     
-    assert make_stylish_result(unchanged) == expected_unchanged
-    assert make_stylish_result(changed) == expected_changed
-    assert make_stylish_result(deleted) == expected_deleted
-    assert make_stylish_result(added) == expected_added
-    assert make_stylish_result(nested) == expected_nested
+    assert get_diff_formatted_stylish(unchanged) == expected_unchanged
+    assert get_diff_formatted_stylish(changed) == expected_changed
+    assert get_diff_formatted_stylish(deleted) == expected_deleted
+    assert get_diff_formatted_stylish(added) == expected_added
+    assert get_diff_formatted_stylish(nested) == expected_nested

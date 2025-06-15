@@ -1,7 +1,7 @@
-from .stylish import get_formatted_value, get_indent, make_stylish_result
+from .stylish import get_diff_formatted_stylish, get_formatted_value, get_indent
 
 __all__ = (
     'get_indent',
     'get_formatted_value',
-    'make_stylish_result',
+    'get_diff_formatted_stylish',
 )

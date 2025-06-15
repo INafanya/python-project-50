@@ -10,16 +10,19 @@ def get_test_data_path(filename):
 def read_text_file(filename):
     return get_test_data_path(filename).read_text()
 
+
+format_name = 'stylish'
+
     
 def test_gendiff_flat_json():
     file1 = get_test_data_path('file1.json')
     file2 = get_test_data_path('file2.json')
     expected_similar = read_text_file('similar_result.txt')
     expected_different = read_text_file('different_result.txt')
-    # Сравнение одинкаовых json
-    assert generate_diff(file1, file1) == expected_similar
-    # Сравнение разных json
-    assert generate_diff(file1, file2) == expected_different
+    # Сравнение одинкаовых плоских json
+    assert generate_diff(file1, file1, format_name) == expected_similar
+    # Сравнение разных плоских json
+    assert generate_diff(file1, file2, format_name) == expected_different
     
 
 def test_gendiff_tree_json():
@@ -28,6 +31,6 @@ def test_gendiff_tree_json():
     expected_similar = read_text_file('similar_tree_result.txt')
     expected_different = read_text_file('different_tree_result.txt')
     # Сравнение одинкаовых json
-    assert generate_diff(file3, file3) == expected_similar
+    assert generate_diff(file3, file3, format_name) == expected_similar
     # Сравнение разных json
-    assert generate_diff(file3, file4) == expected_different
+    assert generate_diff(file3, file4, format_name) == expected_different
