@@ -1,8 +1,8 @@
-from gendiff.build_diff.build_diff import build_diff
-from gendiff.formatters.json import get_diff_formatted_json
-from gendiff.formatters.plain import get_diff_formatted_plain
-from gendiff.formatters.stylish import get_diff_formatted_stylish
-from gendiff.parsing.parsing_file import get_parsed_file
+from ..formatters.json import get_diff_formatted_json
+from ..formatters.plain import get_diff_formatted_plain
+from ..formatters.stylish import get_diff_formatted_stylish
+from .build_diff import build_diff
+from .parsing_file import get_parsed_file
 
 
 def generate_diff(file_path1, file_path2, format_name='stylish'):
@@ -17,4 +17,4 @@ def generate_diff(file_path1, file_path2, format_name='stylish'):
     elif format_name == 'json':
         return get_diff_formatted_json(diff_data)
     else:
-        return 'other format'
+        raise ValueError(f"Unsupported formatter: {format_name}")

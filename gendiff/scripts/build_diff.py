@@ -46,4 +46,3 @@ def build_diff(data1, data2):
                 }
             )
     return diff_result
-

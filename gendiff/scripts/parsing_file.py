@@ -24,4 +24,3 @@ def get_parsed_file(file_path):
         return read_yaml(file_path)
     else:
         return 'not json or yaml file'
-
